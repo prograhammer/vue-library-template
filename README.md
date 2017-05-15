@@ -1,21 +1,19 @@
-# vue-webpack-boilerplate
+# vue-library-template
 
-> A full-featured Webpack setup with hot-reload, lint-on-save, unit testing & css extraction.
-
-> This template is Vue 2.0 compatible. For Vue 1.x use this command: `vue init webpack#1.0 my-project`
-
-## Documentation
-
-- [For this template](http://vuejs-templates.github.io/webpack): common questions specific to this template are answered and each part is described in greater detail
-- [For Vue 2.0](http://vuejs.org/guide/): general information about how to work with Vue, not specific to this template
+> A [Vue-cli](https://github.com/vuejs/vue-cli) fork of the [full-featured Webpack setup](http://vuejs-templates.github.io/webpack) with hot-reload, lint-on-save, unit testing & css extraction.
+> Adjusted for library development (ie. creating components to be imported into other projects via npm).
+> Includes docs site so you can release documentation online for your library.
+> This template is Vue 2.0 compatible. 
 
 ## Usage
 
-This is a project template for [vue-cli](https://github.com/vuejs/vue-cli). **It is recommended to use npm 3+ for a more efficient dependency tree.**
+This is a project template for [vue-cli](https://github.com/vuejs/vue-cli). **It is recommended to use npm 3+ for a more efficient dependency tree.**  
+
+### Run the Cli, Install node_modules, and Start Up the Dev Server
 
 ``` bash
 $ npm install -g vue-cli
-$ vue init webpack my-project
+$ vue init prograhammer/vue-library-template my-project
 $ cd my-project
 $ npm install
 $ npm run dev
@@ -23,37 +21,151 @@ $ npm run dev
 
 If port 8080 is already in use on your machine you must change the port number in `/config/index.js`. Otherwise `npm run dev` will fail.
 
-## What's Included
+### Export Your Library
 
-- `npm run dev`: first-in-class development experience.
-  - Webpack + `vue-loader` for single file Vue components.
-  - State preserving hot-reload
-  - State preserving compilation error overlay
-  - Lint-on-save with ESLint
-  - Source maps
+Let's suppose you created a component called **Hello** that you want other folks to use in their projects. Your library entry file would look like so:  
 
-- `npm run build`: Production ready build.
-  - JavaScript minified with [UglifyJS](https://github.com/mishoo/UglifyJS2).
-  - HTML minified with [html-minifier](https://github.com/kangax/html-minifier).
-  - CSS across all components extracted into a single file and minified with [cssnano](https://github.com/ben-eb/cssnano).
-  - All static assets compiled with version hashes for efficient long-term caching, and a production `index.html` is auto-generated with proper URLs to these generated assets.
-  - Use `npm run build --report`to build with bundle size analytics.
+**/src/lib.js**
+```javascript
+import hello from './components/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
-- `npm run unit`: Unit tests run in PhantomJS with [Karma](http://karma-runner.github.io/0.13/index.html) + [Mocha](http://mochajs.org/) + [karma-webpack](https://github.com/webpack/karma-webpack).
-  - Supports ES2015+ in test files.
-  - Supports all webpack loaders.
-  - Easy mock injection.
+export default hello
+```
 
-- `npm run e2e`: End-to-end tests with [Nightwatch](http://nightwatchjs.org/).
-  - Run tests in multiple browsers in parallel.
-  - Works with one command out of the box:
-    - Selenium and chromedriver dependencies automatically handled.
-    - Automatically spawns the Selenium server.
+### Update Docs Site Entry
 
-### Fork It And Make Your Own
+**/src/docs.js**
+```javascript
+import Vue from 'vue'
+import App from './App'
+import router from './router'
 
-You can fork this repo to create your own boilerplate, and use it with `vue-cli`:
+Vue.config.productionTip = false
+
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router,
+  render: h => h(App)
+})
+```
+
+### Let's Build
 
 ``` bash
-vue init username/repo my-project
+$ npm build        # this builds your library
+$ npm build:docs   # this builds your docs site
+$ npm build:all    # (optional) this builds both
 ```
+
+Check your */dist* folder and you'll some output like this:  
+
+```
+/dist
+   /docs
+      /css
+      /js
+   /lib
+      hello.min.css
+      hello.min.js
+    ...
+```
+
+And in your *package.json* you'll notice:  
+
+**package.json**
+
+```json
+  "main": "dist/lib/hello.min.js",
+```
+
+### Publish!
+
+1. If this is your first time publishing an npm package, you need to register a username/password with `npm adduser`.  
+2. Make sure the version number set in *package.json* is correct, as you won't be allowed to publish to a version number more than once.  
+3. Check https://www.npmjs.com/package/your-package-name-here where `your-package-name-here` is the the name you want to see is available.   You'll get a nice 404 if the package name is not being used.  
+
+Now just publish:  
+
+``` bash
+$ npm publish   # Note: This will run build:all before publishing. See package.json prepublish (hook).
+```
+
+### Import it to another Project as an ES6 Module
+
+If you've made your package public (via package.json `private:false`) then other developers can install it:  
+
+``` bash
+$ npm install hello --save-dev
+```
+
+Then just import anywhere, for example a Vue file:  
+
+```javascript
+//..
+
+import Hello from 'hello'
+
+export default {
+  components: { Hello },
+  // ...
+
+```
+
+### Don't Forget to Put your Docs Site Online
+
+The */dist/docs` folder contains your docs site. Don't forget to copy these files to your server or github pages where you can demo your library and show documentation for other's to see.  
+  
+Enjoy!
+
+## What's Included
+
+- `npm run dev`: The development server for your docs site.
+
+- `npm run build`: Production ready build of your library as an ES6 module (via UMD), ready to import into another project via npm!
+
+- `npm run build:docs`: Production ready build of your docs site for your library. Put this build online so you can demo your library to the world and provide documentation!
+
+- `npm run build:all`: Shortcut to build both library and docs.
+
+## What's So Different from the Vue-cli Webpack Template
+
+### package.json
+
+A few changes oriented more towards OSS library development:  
+
+```json
+  "version": "0.0.1",
+  "private": false,
+  "license": "MIT",
+```
+
+### webpack.lib.conf.js
+
+Configuration to build a library from your library entry:
+
+```javascript
+baseWebpackConfig.entry = {
+  '{{ name }}': './src/lib.js'
+}
+
+var webpackConfig = merge(baseWebpackConfig, {
+  output: {
+    path: config.build.assetsRoot,
+    filename: utils.assetsLibPath('[name].min.js'),
+    library: '[name]',
+    libraryTarget: 'umd'
+  },
+
+  //...
+```
+
+### Default Linter Plugin set to Vue
+
+The default linter plugin & config has been updated in the Cli to be Vue's [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) and configuration [eslint-config-vue](https://github.com/vuejs/eslint-config-vue).  
+  
+Note: Vue has already added this as default to the next release of the webpack template: https://github.com/vuejs-templates/webpack/pull/652#issuecomment-300354318  
+
+### Removed dist from .gitignore
+
+The `dist` folder is removed from .gitignore so that it's available on npm (unless you create a separate .npmignore) and user's who want the minified built distribution of your library can grab it (located in `/lib` subfolder). Also your docs site built distribution is made available in the same folder (located in `/docs` subfolder).  

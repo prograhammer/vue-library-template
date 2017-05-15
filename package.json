@@ -1,8 +1,8 @@
 {
-  "name": "vue-cli-template-webpack",
-  "version": "2.0.0",
+  "name": "vue-library-template",
+  "version": "0.0.1",
   "license": "MIT",
-  "description": "A full-featured Webpack setup with hot-reload, lint-on-save, unit testing & css extraction.",
+  "description": "A fork of the Vue-cli webpack template, but adjusted for library (with docs site) development.",
   "scripts": {
     "docs": "cd docs && gitbook serve",
     "docs:deploy": "bash ./deploy-docs.sh"

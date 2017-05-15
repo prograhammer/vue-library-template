@@ -1,13 +1,18 @@
 {
   "name": "{{ name }}",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "{{ description }}",
   "author": "{{ author }}",
-  "private": true,
+  "main": "dist/lib/{{ name }}.min.js",
+  "private": false,
+  "license": "MIT",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "build": "node build/build.js"{{#unit}},
+    "prepublish": "npm run build:all",
+    "build:all": "npm run build && npm run build:docs",
+    "build:docs": "node build/build.js",
+    "build": "node build/build-lib.js"{{#unit}},
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run"{{/unit}}{{#e2e}},
     "e2e": "node test/e2e/runner.js"{{/e2e}}{{#if_or unit e2e}},
     "test": "{{#unit}}npm run unit{{/unit}}{{#unit}}{{#e2e}} && {{/e2e}}{{/unit}}{{#e2e}}npm run e2e{{/e2e}}"{{/if_or}}{{#lint}},
@@ -46,6 +51,10 @@
     "eslint-config-airbnb-base": "^11.1.3",
     "eslint-import-resolver-webpack": "^0.8.1",
     "eslint-plugin-import": "^2.2.0",
+    {{/if_eq}}
+    {{#if_eq lintConfig "vue"}}
+    "eslint-config-vue": "^2.0.2",
+    "eslint-plugin-vue": "^2.0.1",
     {{/if_eq}}
     {{/lint}}
     "eventsource-polyfill": "^0.9.6",
