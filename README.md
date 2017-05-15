@@ -102,9 +102,7 @@ $ npm install hello --save-dev
 Then just import anywhere, for example a Vue file:  
 
 ```javascript
-//..
-
-import Hello from 'hello'
+import Hello from 'hello'  // <-- hello is the name you gave to your project when you ran the Cli
 
 export default {
   components: { Hello },
