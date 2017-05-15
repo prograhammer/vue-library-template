@@ -27,9 +27,9 @@ Let's suppose you created a component called **Hello** that you want other folks
 
 **/src/lib.js**
 ```javascript
-import hello from './components/Hello'
+import Hello from './components/Hello'
 
-export default hello
+export default Hello  // <-- you could also export more modules than just the default
 ```
 
 #### Update Docs Site Entry
