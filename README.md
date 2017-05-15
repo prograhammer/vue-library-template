@@ -112,7 +112,7 @@ export default {
 
 ```
 
-### Don't Forget to Put your Docs Site Online
+#### Don't Forget to Put your Docs Site Online
 
 The */dist/docs* folder contains your docs site. Don't forget to copy these files to your server or github pages where you can demo your library and show documentation for other's to see.  
   
@@ -123,12 +123,13 @@ Enjoy!
 
 - `npm run dev`: The development server for your docs site.
 
-- `npm run build`: Production ready build of your library as an ES6 module (via UMD), ready to import into another project via npm!
+- `npm run build`: Production ready build of your library as an ES6 module (via UMD), ready to import into another project via npm.
 
-- `npm run build:docs`: Production ready build of your docs site for your library. Put this build online so you can demo your library to the world and provide documentation!
+- `npm run build:docs`: Production ready build of your docs site for your library. Put this build online so you can demo your library to the world and provide documentation.
 
 - `npm run build:all`: Shortcut to build both library and docs.  
 
+- `prepublish`: Npm prepublish hook so you can run `npm publish` and both your library and docs are built first.
 
 ## What's So Different from the Vue-cli Webpack Template
 
