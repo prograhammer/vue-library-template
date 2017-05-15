@@ -9,7 +9,7 @@
 
 This is a project template for [vue-cli](https://github.com/vuejs/vue-cli). **It is recommended to use npm 3+ for a more efficient dependency tree.**  
 
-### Run the Cli, Install node_modules, and Start Up the Dev Server
+#### Run the Cli, Install Node_modules, and Start the Dev Server
 
 ``` bash
 $ npm install -g vue-cli
@@ -21,18 +21,18 @@ $ npm run dev
 
 If port 8080 is already in use on your machine you must change the port number in `/config/index.js`. Otherwise `npm run dev` will fail.
 
-### Export Your Library
+#### Export Your Library
 
 Let's suppose you created a component called **Hello** that you want other folks to use in their projects. Your library entry file would look like so:  
 
 **/src/lib.js**
 ```javascript
-import hello from './components/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import hello from './components/Hello'
 
 export default hello
 ```
 
-### Update Docs Site Entry
+#### Update Docs Site Entry
 
 **/src/docs.js**
 ```javascript
@@ -50,7 +50,7 @@ new Vue({
 })
 ```
 
-### Let's Build
+#### Let's Build
 
 ``` bash
 $ npm build        # this builds your library
@@ -79,7 +79,7 @@ And in your *package.json* you'll notice:
   "main": "dist/lib/hello.min.js",
 ```
 
-### Publish!
+#### Publish!
 
 1. If this is your first time publishing an npm package, you need to register a username/password with `npm adduser`.  
 2. Make sure the version number set in *package.json* is correct, as you won't be allowed to publish to a version number more than once.  
@@ -91,7 +91,7 @@ Now just publish:
 $ npm publish   # Note: This will run build:all before publishing. See package.json prepublish (hook).
 ```
 
-### Import it to another Project as an ES6 Module
+#### Import it to another Project as an ES6 Module
 
 If you've made your package public (via package.json `private:false`) then other developers can install it:  
 
@@ -114,9 +114,10 @@ export default {
 
 ### Don't Forget to Put your Docs Site Online
 
-The */dist/docs` folder contains your docs site. Don't forget to copy these files to your server or github pages where you can demo your library and show documentation for other's to see.  
+The */dist/docs* folder contains your docs site. Don't forget to copy these files to your server or github pages where you can demo your library and show documentation for other's to see.  
   
-Enjoy!
+Enjoy!  
+
 
 ## What's Included
 
@@ -126,11 +127,12 @@ Enjoy!
 
 - `npm run build:docs`: Production ready build of your docs site for your library. Put this build online so you can demo your library to the world and provide documentation!
 
-- `npm run build:all`: Shortcut to build both library and docs.
+- `npm run build:all`: Shortcut to build both library and docs.  
+
 
 ## What's So Different from the Vue-cli Webpack Template
 
-### package.json
+#### package.json
 
 A few changes oriented more towards OSS library development:  
 
@@ -140,7 +142,7 @@ A few changes oriented more towards OSS library development:
   "license": "MIT",
 ```
 
-### webpack.lib.conf.js
+#### webpack.lib.conf.js
 
 Configuration to build a library from your library entry:
 
@@ -160,12 +162,16 @@ var webpackConfig = merge(baseWebpackConfig, {
   //...
 ```
 
-### Default Linter Plugin set to Vue
+#### Default Linter Plugin Set to Vue
 
 The default linter plugin & config has been updated in the Cli to be Vue's [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) and configuration [eslint-config-vue](https://github.com/vuejs/eslint-config-vue).  
   
 Note: Vue has already added this as default to the next release of the webpack template: https://github.com/vuejs-templates/webpack/pull/652#issuecomment-300354318  
 
-### Removed dist from .gitignore
+#### docs.js
+
+The entry point has been changed from */src/main.js* to */src/docs.js* because the SPA you are releasing is your docs site.  
+
+#### Removed dist from .gitignore
 
 The `dist` folder is removed from .gitignore so that it's available on npm (unless you create a separate .npmignore) and user's who want the minified built distribution of your library can grab it (located in `/lib` subfolder). Also your docs site built distribution is made available in the same folder (located in `/docs` subfolder).  
