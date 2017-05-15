@@ -21,9 +21,9 @@ $ npm run dev
 
 If port 8080 is already in use on your machine you must change the port number in `/config/index.js`. Otherwise `npm run dev` will fail.
 
-#### Export Your Library
+#### Update Library Entry
 
-Let's suppose you created a component called **Hello** that you want other folks to use in their projects. The library entry file would look like:  
+Let's suppose you created a component called **Hello** that you want other folks to use in their projects. Export your library using the entry point like this:  
 
 **/src/lib.js**
 ```javascript
