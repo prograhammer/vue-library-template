@@ -1,6 +1,6 @@
 {
   "name": "vue-library-template",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "A fork of the Vue-cli webpack template, but adjusted for library (with docs site) development.",
   "scripts": {
