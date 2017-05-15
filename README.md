@@ -68,7 +68,7 @@ Check your */dist* folder and you'll see some output like this:
    /lib
       hello.min.css
       hello.min.js
-    ...
+      ...
 ```
 
 And in your *package.json* you'll notice:  
