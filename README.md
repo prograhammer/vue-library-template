@@ -23,7 +23,7 @@ If port 8080 is already in use on your machine you must change the port number i
 
 #### Export Your Library
 
-Let's suppose you created a component called **Hello** that you want other folks to use in their projects. Your library entry file would look like so:  
+Let's suppose you created a component called **Hello** that you want other folks to use in their projects. The library entry file would look like:  
 
 **/src/lib.js**
 ```javascript
@@ -58,7 +58,7 @@ $ npm build:docs   # this builds your docs site
 $ npm build:all    # (optional) this builds both
 ```
 
-Check your */dist* folder and you'll some output like this:  
+Check your */dist* folder and you'll see some output like this:  
 
 ```
 /dist
