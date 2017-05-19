@@ -1,0 +1,9 @@
+{{#bulma}}
+@import '../../node_modules/bulma/sass/utilities/initial-variables';
+
+// You can add variables changes here, before loading the rest of Bulma ...
+
+@import '../../node_modules/bulma/bulma';
+{{/bulma}}
+
+// Import more app sass/scss styles here

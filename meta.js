@@ -75,17 +75,17 @@ module.exports = {
         }
       ]
     },
-    "pug": {
-      "type": "confirm",
-      "message": "Install Pug (formally Jade) for cleaner templates in your .vue files?"
-    },
-    "sass": {
-      "type": "confirm",
-      "message": "Install Sass/SCSS?"
-    },
     "bulma": {
       "type": "confirm",
       "message": "Install Bulma, a small CSS/Sass-only framework, useful for your demo/docs pages (will also add a font-awesome cdn link to your index.html)?"
+    },
+    "sass": {
+      "type": "confirm",
+      "message": "Install Sass/SCSS (Note: Bulma requires Sass)?"
+    },
+    "pug": {
+      "type": "confirm",
+      "message": "Install Pug (formally Jade) for cleaner templates in your .vue files?"
     },
     "unit": {
       "type": "confirm",
@@ -103,7 +103,9 @@ module.exports = {
     "test/unit/**/*": "unit",
     "build/webpack.test.conf.js": "unit",
     "test/e2e/**/*": "e2e",
-    "src/router/**/*": "router"
+    "src/router/**/*": "router",
+    "src/styles/app.scss": "sass",
+    "src/styles/app.styl": "stylus"
   },
   "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\nDocumentation can be found at https://vuejs-templates.github.io/webpack"
 };
