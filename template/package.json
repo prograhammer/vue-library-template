@@ -1,6 +1,6 @@
 {
   "name": "{{ name }}",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "{{ description }}",
   "author": "{{ author }}",
   "main": "dist/lib/{{ name }}.min.js",
