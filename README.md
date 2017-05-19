@@ -14,7 +14,7 @@ Features:
     - Pug (Jade)
     - Bulma  
 3. Easily build SPA for a docs/demo site to show off your library.  
-4. Build and write changes to disk when running dev-server. Useful for when you are developing packages simultaneously where one package depends on the other (using [npm link](https://docs.npmjs.com/cli/link)).
+4. Simultaneous package development: Build and write changes to disk when running dev-server. Useful for when you are developing packages simultaneously where one package depends on the other (using [npm link](https://docs.npmjs.com/cli/link)).
 
 ## Usage
 
@@ -195,11 +195,11 @@ Note: Your library and vendors are chunked out into separate files and included 
 
 In the Cli, switches the default to be the smaller Runtime build since most people don't reference templates outside of .vue files. (So you can just press 'Enter' key for 'yes')
 
-#### Write File Changes to Disk When Running Webpack Dev Server
+#### Simultaneous Package Development
 
-In many instances you are working on a libary and are likely to be writing it for a bigger parent project you are simultaneously working on. Using webpack's watch mode, we can write/build files to disk while running the dev server. First connect your packages using [npm link](https://docs.npmjs.com/cli/link) then do `npm run dev`. You'll notice each time you make a change to your library, the */dist/lib* folder get's updated with the new build. If you are simultaneously running the dev server in your parent project (don't forget, check *config/index.js* to ensure projects are on different ports!) then you'll notice the changes take effect immediately.
+In many instances you are working on a library and are likely to be writing it for a bigger parent project you are simultaneously working on. Using webpack's watch mode, we can write/build files to disk while running the dev server. First connect your packages using [npm link](https://docs.npmjs.com/cli/link) then do `npm run dev`. Notice each time you make a change to your library, the */dist/lib* folder get's updated with the new build. If you are simultaneously running the dev server in your parent project (don't forget, check *config/index.js* to ensure projects are on different ports!) then you'll notice the changes take effect immediately.
 
-Here's where watch is actived:
+Here's where watch is activated:
 
 *package.json*
 
