@@ -14,6 +14,7 @@ Features:
     - Pug (Jade)
     - Bulma  
 3. Easily build SPA for a docs/demo site to show off your library.  
+4. Write to disk file changes (webpack watch) so your library build updates in another project you are simultaneously running webpack's dev-server with (ie. using `npm link` to connect parent and child library package you are working on).
 
 ## Usage
 
@@ -129,15 +130,19 @@ Enjoy!
 
 ## What's Included
 
-- `npm run dev`: The development server for your docs site.
+- `prepublish`: Npm prepublish hook so you can run `npm publish` and both your library and docs are built first.
 
-- `npm run build`: Production ready build of your library as an ES6 module (via UMD), ready to import into another project via npm.
+- `npm run dev`: Shortcut to run both dev:lib and dev:docs in parallel using npm-run-all.
+
+- `npm run dev:lib`: Runs webpack watch mode on your library so file changes are built and re-written to disk automatically (useful for npm link situations).
+
+- `npm run dev:docs`: Runs both the development server for your docs/demo site.
+
+- `npm run build`: Shortcut to run both build:lib and build:docs.
+
+- `npm run build:lib`: Production ready build of your library as an ES6 module (via UMD), ready to import into another project via npm.
 
 - `npm run build:docs`: Production ready build of your docs site for your library. Put this build online so you can demo your library to the world and provide documentation.
-
-- `npm run build:all`: Shortcut to build both library and docs.  
-
-- `prepublish`: Npm prepublish hook so you can run `npm publish` and both your library and docs are built first.
 
 ## What's So Different from the Vue-cli Webpack Template
 
@@ -184,10 +189,52 @@ In the Cli, you can choose to also include Stylus, Pug (formally Jade), and Bulm
 #### docs.js
 
 The entry point has been changed from */src/main.js* to */src/docs.js* because the SPA you are releasing is your docs site.  
+Note: Your library and vendors are chunked out into separate files and included in your index.html file automatically.
 
 #### Vue build default
 
 In the Cli, switches the default to be the smaller Runtime build since most people don't reference templates outside of .vue files. (So you can just press 'Enter' key for 'yes')
+
+#### Write File Changes to Disk When Running Webpack Dev Server
+
+Many times when you are working on a libary, you are likely to be writing it for a bigger parent project you are working on. Using webpack's watch mode, we can write/build files to disk while running the dev server. First connect your packages using [npm link](https://docs.npmjs.com/cli/link) then do `npm run dev`. You'll notice each time you make a change to your library, the */dist/lib* folder get's updated with the new build. If you are simultaneously running the dev server in your parent project (don't forget, check *config/index.js* to ensure projects are on different ports!) then you'll notice the changes take effect immediately.
+
+Here's where watch is actived:
+
+*package.json*
+
+    "scripts": {
+      // ...
+
+      "dev": "npm-run-all --parallel dev:lib dev:docs",
+      "dev:lib": "webpack --config build/webpack.lib.conf.js --watch --progress --hide-modules", // <-- watch flag added
+      "dev:docs": "node build/dev-server.js",
+
+You'll notice we are using [npm-run-all](https://github.com/mysticatea/npm-run-all) to run the dev-server and webpack watch npm scripts in parallel. This is nicer since we forked from the original vue-cli webpack template. The other route we could have taken is to run both using `webpack-hot-middleware` (thanks to github user [ywmalil](https://github.com/ywmail)'s answer [here](https://github.com/webpack/webpack-dev-server/issues/641)'):
+
+    const firstConfig = require('./config/first');
+    const secondConfig = require('./config/second');
+
+    let express = require('express');
+    let middleware = require('webpack-dev-middleware');
+    let app = express();
+
+    // Dev Server
+    [firstConfig, secondConfig].forEach(function (config) {
+        let compiler = webpack(config);
+        app.use(middleware(compiler, {
+            publicPath: config.output.publicPath
+        }));
+
+        // Enables HMR
+        app.use(webpackHotMiddleware(compiler, {
+            log: console.log, path: config.output.publicPath + '__webpack_hmr', heartbeat: 10 * 1000
+        }));
+
+    });
+
+
+    let server = app.listen(18088);
 
 #### Removed dist from .gitignore
 

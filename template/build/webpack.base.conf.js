@@ -9,7 +9,8 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    docs: './src/docs.js'
+    docs: './src/docs.js',
+    ['{{ name }}']: './src/lib.js'
   },
   output: {
     path: config.build.assetsRoot,

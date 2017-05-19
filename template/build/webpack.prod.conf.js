@@ -67,6 +67,10 @@ var webpackConfig = merge(baseWebpackConfig, {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
+    // split your library css/js into separate files
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vueboxy'
+    }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
