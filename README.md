@@ -212,7 +212,7 @@ Here's where watch is activated:
 
 You'll notice we are using [npm-run-all](https://github.com/mysticatea/npm-run-all) to run the dev-server and webpack watch npm scripts in parallel. This is nicer since we forked from the original vue-cli webpack template. The other route we could have taken is to run both using `webpack-hot-middleware` (thanks to github user [ywmalil](https://github.com/ywmail)'s answer [here](https://github.com/webpack/webpack-dev-server/issues/641)'):
 
-*alternative approach (shown here for demonstration purposes)*
+*alternative approach in *dev-server.js* (shown here for demonstration purposes)*
 
     const firstConfig = require('./config/first');
     const secondConfig = require('./config/second');
@@ -240,6 +240,13 @@ You'll notice we are using [npm-run-all](https://github.com/mysticatea/npm-run-a
 
 You could also look into Webpack's multi-compiler mode example: https://github.com/webpack/webpack/tree/master/examples/multi-compiler
 
-#### Removed dist from .gitignore
+#### Some Additional Meta Tags
+
+These additional meta tags are included in your *index.html*:
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+#### Removed */dist* from .gitignore
 
 The `dist` folder is removed from .gitignore so that it's available on npm (unless you create a separate .npmignore) and user's who want the minified built distribution of your library can grab it (located in `/lib` subfolder). Also your docs site built distribution is made available in the same folder (located in `/docs` subfolder).  
