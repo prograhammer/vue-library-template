@@ -84,6 +84,10 @@
     "chai": "^3.5.0",
     "sinon": "^2.1.0",
     "sinon-chai": "^2.8.0",
+    {{#stylus}}   
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    {{/stylus}}
     "inject-loader": "^3.0.0",
     "babel-plugin-istanbul": "^4.1.1",
     "phantomjs-prebuilt": "^2.1.14",

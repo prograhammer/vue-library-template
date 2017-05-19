@@ -83,6 +83,10 @@ module.exports = {
       "type": "confirm",
       "message": "Install Sass/SCSS (Note: Bulma requires Sass)?"
     },
+    "stylus": {
+      "type": "confirm",
+      "message": "Install Stylus (Note: You'll still need to additionally install it globally for Sublime yourself)?"
+    },
     "pug": {
       "type": "confirm",
       "message": "Install Pug (formally Jade) for cleaner templates in your .vue files?"
