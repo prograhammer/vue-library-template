@@ -75,6 +75,18 @@ module.exports = {
         }
       ]
     },
+    "pug": {
+      "type": "confirm",
+      "message": "Install Pug (formally Jade) for cleaner templates in your .vue files?"
+    },
+    "sass": {
+      "type": "confirm",
+      "message": "Install Sass/SCSS?"
+    },
+    "bulma": {
+      "type": "confirm",
+      "message": "Install Bulma, a small CSS/Sass-only framework, useful for your demo/docs pages (will also add a font-awesome cdn link to your index.html)?"
+    },
     "unit": {
       "type": "confirm",
       "message": "Setup unit tests with Karma + Mocha?"

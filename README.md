@@ -3,7 +3,17 @@
 > A [Vue-cli](https://github.com/vuejs/vue-cli) fork of the [full-featured Webpack setup](http://vuejs-templates.github.io/webpack) with hot-reload, lint-on-save, unit testing & css extraction.
 > Adjusted for library development (ie. creating components to be imported into other projects via npm).
 > Includes docs site so you can release documentation online for your library.
-> This template is Vue 2.0 compatible. 
+> This template is Vue 2.0+ compatible. 
+
+Features:  
+
+1. Easily build your component and publish it for other people to include in their projects.  
+2. Optionally include: 
+ - Vue eslint config 
+ - Stylus
+ - Pug (Jade)
+ - Bulma  
+3. Easily build SPA for a docs/demo site to show off your library.  
 
 ## Usage
 
@@ -25,7 +35,7 @@ If port 8080 is already in use on your machine you must change the port number i
 
 Let's suppose you created a component called **Hello** that you want other folks to use in their projects. Export your library using the entry point like this:  
 
-**/src/lib.js**
+*/src/lib.js*
 ```javascript
 import Hello from './components/Hello'
 
@@ -34,7 +44,7 @@ export default Hello  // <-- you could also export more modules than just the de
 
 #### Update Docs Site Entry
 
-**/src/docs.js**
+*/src/docs.js*
 ```javascript
 import Vue from 'vue'
 import App from './App'
@@ -73,7 +83,7 @@ Check your */dist* folder and you'll see some output like this:
 
 And in your *package.json* you'll notice:  
 
-**package.json**
+*package.json*
 
 ```json
   "main": "dist/lib/hello.min.js",
@@ -166,6 +176,10 @@ var webpackConfig = merge(baseWebpackConfig, {
 The default linter plugin & config has been updated in the Cli to be Vue's [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) and configuration [eslint-config-vue](https://github.com/vuejs/eslint-config-vue).  
   
 Note: Vue has already added this as default to the next release of the webpack template: https://github.com/vuejs-templates/webpack/pull/652#issuecomment-300354318  
+
+#### Stylus, Pug, Bulma
+
+In the Cli, you can choose to also include Stylus, Pug (formally Jade), and Bulma (A light CSS/SASS-only UI framework, helpful for building your demo/docs site).
 
 #### docs.js
 
