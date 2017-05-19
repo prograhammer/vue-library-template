@@ -189,7 +189,8 @@ In the Cli, you can choose to also include Stylus, Pug (formally Jade), and Bulm
 #### docs.js
 
 The entry point has been changed from */src/main.js* to */src/docs.js* because the SPA you are releasing is your docs site.  
-Note: Your library and vendors are chunked out into separate files and included in your index.html file automatically.
+
+Note: Your library and vendors are chunked out from your docs into separate files and included in the *index.html* file automatically. This should give a little more flexibility to improve caching on your docs/demo website.
 
 #### Vue build default
 
