@@ -197,7 +197,7 @@ In the Cli, switches the default to be the smaller Runtime build since most peop
 
 #### Simultaneous Package Development
 
-In many instances you are working on a library and are likely to be writing it for a bigger parent project you are simultaneously working on. Using webpack's watch mode, we can write/build files to disk while running the dev server. First connect your packages using [npm link](https://docs.npmjs.com/cli/link) then do `npm run dev`. Notice each time you make a change to your library, the */dist/lib* folder get's updated with the new build. If you are simultaneously running the dev server in your parent project (don't forget, check *config/index.js* to ensure projects are on different ports!) then you'll notice the changes take effect immediately.
+In many instances you are working on a library and are likely to be writing it for a bigger parent project you are simultaneously working on. Using webpack's watch mode, we can write/build files to disk while running the dev server. First connect your packages using [npm link](https://docs.npmjs.com/cli/link) then do `npm run dev`. Notice each time you make a change to your library, the */dist/lib* folder get's updated with the new build. If you are simultaneously running the dev server in your parent project (don't forget, check *config/index.js* to ensure projects are on different ports!) then you'll notice the changes take effect immediately across packages.
 
 Here's where watch is activated:
 
