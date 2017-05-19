@@ -7,13 +7,13 @@
 
 Features:  
 
-1. Easily build your component and publish it for other people to include in their projects.  
-2. Optionally include: 
- - Vue eslint config 
- - Stylus
- - Pug (Jade)
- - Bulma  
-3. Easily build SPA for a docs/demo site to show off your library.  
+  1. Easily build your component and publish it for other people to include in their projects.  
+  2. Optionally include: 
+    - Vue eslint config 
+    - Stylus
+    - Pug (Jade)
+    - Bulma  
+  3. Easily build SPA for a docs/demo site to show off your library.  
 
 ## Usage
 
