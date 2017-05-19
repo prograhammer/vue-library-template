@@ -11,7 +11,7 @@
     "dev": "npm-run-all --parallel dev:lib dev:docs",
     "dev:lib": "webpack --config build/webpack.lib.conf.js --watch --progress --hide-modules",
     "dev:docs": "node build/dev-server.js",
-    "build": "npm run build && npm run build:docs",
+    "build": "npm run build:lib && npm run build:docs",
     "build:lib": "node build/build-lib.js",
     "build:docs": "node build/build.js"{{#unit}},
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run"{{/unit}}{{#e2e}},
