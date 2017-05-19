@@ -238,6 +238,8 @@ You'll notice we are using [npm-run-all](https://github.com/mysticatea/npm-run-a
 
     let server = app.listen(18088);
 
+You could also look into Webpack's multi-compiler mode example: https://github.com/webpack/webpack/tree/master/examples/multi-compiler
+
 #### Removed dist from .gitignore
 
 The `dist` folder is removed from .gitignore so that it's available on npm (unless you create a separate .npmignore) and user's who want the minified built distribution of your library can grab it (located in `/lib` subfolder). Also your docs site built distribution is made available in the same folder (located in `/docs` subfolder).  
