@@ -185,6 +185,10 @@ In the Cli, you can choose to also include Stylus, Pug (formally Jade), and Bulm
 
 The entry point has been changed from */src/main.js* to */src/docs.js* because the SPA you are releasing is your docs site.  
 
+#### Vue build default
+
+In the Cli, switches the default to be the smaller Runtime build since most people don't reference templates outside of .vue files. (So you can just press 'Enter' key for 'yes')
+
 #### Removed dist from .gitignore
 
 The `dist` folder is removed from .gitignore so that it's available on npm (unless you create a separate .npmignore) and user's who want the minified built distribution of your library can grab it (located in `/lib` subfolder). Also your docs site built distribution is made available in the same folder (located in `/docs` subfolder).  

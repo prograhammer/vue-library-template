@@ -29,15 +29,15 @@ module.exports = {
       "message": "Vue build",
       "choices": [
         {
+          "name": "Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere",
+          "value": "runtime",
+          "short": "runtime"
+        },
+        {
           "name": "Runtime + Compiler: recommended for most users",
           "value": "standalone",
           "short": "standalone"
         },
-        {
-          "name": "Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere",
-          "value": "runtime",
-          "short": "runtime"
-        }
       ]
     },
     "router": {
@@ -85,7 +85,7 @@ module.exports = {
     },
     "stylus": {
       "type": "confirm",
-      "message": "Install Stylus (Note: You'll still need to additionally install it globally for Sublime yourself)?"
+      "message": "Install Stylus (Note: You'll need to additionally install it globally for Sublime yourself)?"
     },
     "pug": {
       "type": "confirm",
