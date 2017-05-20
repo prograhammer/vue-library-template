@@ -64,9 +64,9 @@ new Vue({
 #### Let's Build
 
 ``` bash
-$ npm build        # this builds your library
-$ npm build:docs   # this builds your docs site
-$ npm build:all    # (optional) this builds both
+$ npm build          # This builds both your library and your docs/demo SPA.
+$ npm build:library  # This builds just your library.
+$ npm build:docs     # This builds just your docs/demo SPA.
 ```
 
 Check your */dist* folder and you'll see some output like this:  
@@ -99,7 +99,7 @@ And in your *package.json* you'll notice:
 Now just publish:  
 
 ``` bash
-$ npm publish   # Note: This will run build:all before publishing. See package.json prepublish (hook).
+$ npm publish   # Note: This will run npm build before publishing. See package.json prepublish (hook).
 ```
 
 #### Import it to another Project as an ES6 Module
@@ -125,8 +125,11 @@ export default {
 
 The */dist/docs* folder contains your docs site. Don't forget to copy these files to your server or github pages where you can demo your library and show documentation for other's to see.  
   
-Enjoy!  
+#### You Can Work on Your Library at the Same Time You Work on Your Project
 
+See the *Simultaneous Package Development* section further down.  
+
+Enjoy!
 
 ## What's Included
 
