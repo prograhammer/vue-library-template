@@ -1,6 +1,6 @@
 # vue-library-template
 
-> A [Vue-cli](https://github.com/vuejs/vue-cli) fork of the [full-featured Webpack setup](http://vuejs-templates.github.io/webpack) with hot-reload, lint-on-save, unit testing & css extraction.
+> A [Vue-cli](https://github.com/vuejs/vue-cli) template based on the [Vuejs full-featured Webpack setup](http://vuejs-templates.github.io/webpack) with hot-reload, lint-on-save, unit testing & css extraction.
 > Adjusted for library development (ie. creating components to be imported into other projects via npm).
 > Includes docs site so you can release documentation online for your library.
 > This template is Vue 2.0+ compatible. 
