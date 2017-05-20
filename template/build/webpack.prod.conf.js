@@ -69,7 +69,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     // split your library css/js into separate files
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vueboxy'
+      name: '{{ name }}'
     }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
