@@ -2,8 +2,13 @@
 
 module.exports = {
   root: true,
+  {{#if_eq lintConfig "airbnb"}}
   parser: 'babel-eslint',
+  {{/if_eq}}
   parserOptions: {
+    {{#if_eq lintConfig "standard"}}
+    parser: 'babel-eslint',
+    {{/if_eq}}
     sourceType: 'module'
   },
   env: {
@@ -11,19 +16,23 @@ module.exports = {
   },
   {{#if_eq lintConfig "standard"}}
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  extends: 'standard',
+  extends: [
+    'standard',
+    'plugin:vue/recommended'
+  ],
   {{/if_eq}}
   {{#if_eq lintConfig "airbnb"}}
   extends: 'airbnb-base',
   {{/if_eq}}
-  {{#if_eq lintConfig "vue"}}
-  extends: 'vue',
-  {{/if_eq}}
   // required to lint *.vue files
   plugins: [
-    'html'{{#if_eq lintConfig "vue"}},{{/if_eq}}
-    {{#if_eq lintConfig "vue"}}'vue'{{/if_eq}}
+    'html'
   ],
+  {{#if_eq lintConfig "standard"}}
+  'settings': {
+      'html/html-extensions': ['.html'],  // don't include .vue
+  },
+  {{/if_eq}}
   {{#if_eq lintConfig "airbnb"}}
   // check if imports actually resolve
   'settings': {

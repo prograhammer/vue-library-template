@@ -3,16 +3,16 @@
 > A [Vue-cli](https://github.com/vuejs/vue-cli) template based on the [Vuejs full-featured Webpack setup](http://vuejs-templates.github.io/webpack) with hot-reload, lint-on-save, unit testing & css extraction.
 > Adjusted for library development (ie. creating components to be imported into other projects via npm).
 > Includes docs site so you can release documentation online for your library.
-> This template is Vue 2.0+ compatible. 
+> This template is Vue 2.x compatible. 
 
 Features:  
 
 1. Easily build your component and publish it for other people to include in their projects.  
 2. Optionally include: 
-    - Vue eslint config 
+    - Sass/SCSS 
     - Stylus
     - Pug (Jade)
-    - Bulma  
+    - Buefy/Bulma  
 3. Easily build SPA for a docs/demo site to show off your library.  
 4. Simultaneous package development: Build and write changes to disk when running dev-server. Useful for when you are developing packages simultaneously where one package depends on the other (using [npm link](https://docs.npmjs.com/cli/link)).
 
@@ -123,7 +123,7 @@ export default {
 
 #### Don't Forget to Put your Docs Site Online
 
-The */dist/docs* folder contains your docs site. Don't forget to copy these files to your server or github pages where you can demo your library and show documentation for other's to see.  
+The */dist/docs* folder contains your docs site. Don't forget to copy these files to your server or GitHub Pages where you can demo your library and show documentation for other's to see. For Github pages, go to your repo > Settings > GitHub Pages > Source > master branch (note: You should already have setup your own GitHub Pages github.io repo). This will look for `index.html` in your repo's root folder and configure it automatically so that `my-username.github.io/my-project/` will load your repo's docs site.
   
 #### You Can Work on Your Library at the Same Time You Work on Your Project
 
@@ -133,7 +133,7 @@ Enjoy!
 
 ## What's Included
 
-- `prepublish`: Npm prepublish hook so you can run `npm publish` and both your library and docs are built first.
+- `prepublishOnly`: Npm prepublish hook so you can run `npm publish` and both your library and docs are built first.
 
 - `npm run dev`: Shortcut to run both dev:lib and dev:docs in parallel using [npm-run-all](https://github.com/mysticatea/npm-run-all).
 
@@ -179,15 +179,13 @@ var webpackConfig = merge(baseWebpackConfig, {
   //...
 ```
 
-#### Default Linter Plugin Set to Vue
+#### Add Vue Recommendations to the Default Linter Standard
 
-The default linter plugin & config has been updated in the Cli to be Vue's [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) and configuration [eslint-config-vue](https://github.com/vuejs/eslint-config-vue).  
-  
-Note: Vue has already added this as default to the next release of the webpack template: https://github.com/vuejs-templates/webpack/pull/652#issuecomment-300354318  
+The [Vue Eslint Plugin](https://github.com/vuejs/eslint-plugin-vue) now comes with the recommended rules configuration included that you can add to whatever rules you are using (ie. Standard). Since this seems to be the most typical way to develop in Vue, I've added this plugin along with the Standard linter option (default). You can read more here: 
 
 #### Stylus, Pug, Bulma
 
-In the Cli, you can choose to also include Stylus, Pug (formally Jade), and Bulma (A light CSS/SASS-only UI framework, helpful for building your demo/docs site).
+In the Cli, you can choose to also include Stylus, Pug (formally Jade), and Buefy (A light Vue UI components framework that uses the popular Bulma CSS/SASS-only UI framework) which is helpful for building your demo/docs site).
 
 #### docs.js
 

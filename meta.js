@@ -37,7 +37,7 @@ module.exports = {
           "name": "Runtime + Compiler: recommended for most users",
           "value": "standalone",
           "short": "standalone"
-        },
+        }
       ]
     },
     "router": {
@@ -54,12 +54,7 @@ module.exports = {
       "message": "Pick an ESLint preset",
       "choices": [
         {
-          "name": "Vue (https://github.com/vuejs/eslint-config-vue)",
-          "value": "vue",
-          "short": "Vue"
-        },
-        {
-          "name": "Standard (https://github.com/feross/standard)",
+          "name": "Standard with Vue Recommendations (https://github.com/feross/standard)",
           "value": "standard",
           "short": "Standard"
         },
@@ -75,13 +70,13 @@ module.exports = {
         }
       ]
     },
-    "bulma": {
+    "buefy": {
       "type": "confirm",
-      "message": "Install Bulma, a small CSS/Sass-only framework, useful for your demo/docs pages (will also add a font-awesome cdn link to your index.html)?"
+      "message": "Install Buefy, a lightweight Vue UI framework with Bulma, useful for your demo/docs pages (will also add a material design icons cdn link to your index.html)?"
     },
     "sass": {
       "type": "confirm",
-      "message": "Install Sass/SCSS (Note: Bulma requires Sass)?"
+      "message": "Install Sass/SCSS (Note: Buefy needs this)?"
     },
     "stylus": {
       "type": "confirm",

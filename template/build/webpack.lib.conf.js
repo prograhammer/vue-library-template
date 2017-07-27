@@ -4,13 +4,12 @@ var webpack = require('webpack')
 var config = require('../config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 var env = {{#if_or unit e2e}}process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
-  : {{/if_or}}config.build.env
+  : {{/if_or}}config.lib.env
 
 baseWebpackConfig.entry = {
   '{{ name }}': './src/lib.js'
@@ -19,13 +18,13 @@ baseWebpackConfig.entry = {
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
-      sourceMap: config.build.productionSourceMap,
+      sourceMap: config.lib.productionSourceMap,
       extract: true
     })
   },
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  devtool: config.lib.productionSourceMap ? '#source-map' : false,
   output: {
-    path: config.build.assetsRoot,
+    path: config.lib.assetsRoot,
     filename: utils.assetsLibPath('[name].min.js'),
     library: '[name]',
     libraryTarget: 'umd'
@@ -51,19 +50,11 @@ var webpackConfig = merge(baseWebpackConfig, {
       cssProcessorOptions: {
         safe: true
       }
-    }),
-    // copy custom static assets
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: config.build.assetsSubDirectory,
-        ignore: ['.*']
-      }
-    ])
+    })
   ]
 })
 
-if (config.build.productionGzip) {
+if (config.lib.productionGzip) {
   var CompressionWebpackPlugin = require('compression-webpack-plugin')
 
   webpackConfig.plugins.push(
@@ -72,7 +63,7 @@ if (config.build.productionGzip) {
       algorithm: 'gzip',
       test: new RegExp(
         '\\.(' +
-        config.build.productionGzipExtensions.join('|') +
+        config.lib.productionGzipExtensions.join('|') +
         ')$'
       ),
       threshold: 10240,
@@ -81,7 +72,7 @@ if (config.build.productionGzip) {
   )
 }
 
-if (config.build.bundleAnalyzerReport) {
+if (config.lib.bundleAnalyzerReport) {
   var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
