@@ -181,7 +181,7 @@ var webpackConfig = merge(baseWebpackConfig, {
 
 #### Add Vue Recommendations to the Default Linter Standard
 
-The [Vue Eslint Plugin](https://github.com/vuejs/eslint-plugin-vue) now comes with the recommended rules configuration included that you can add to whatever rules you are using (ie. Standard). Since this seems to be the most typical way to develop in Vue, I've added this plugin along with the Standard linter option (default). You can read more here: 
+The [Vue Eslint Plugin](https://github.com/vuejs/eslint-plugin-vue) now comes with the recommended rules configuration included that you can add to whatever rules you are using (ie. Standard). Since this seems to be the most typical way to develop in Vue, I've added this plugin along with the Standard linter option (default).  
 
 #### Stylus, Pug, Bulma
 
