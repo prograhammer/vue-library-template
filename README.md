@@ -13,7 +13,7 @@ Features:
     - Stylus
     - Pug (Jade)
     - Buefy/Bulma  
-3. Easily build SPA for a docs/demo site to show off your library.  
+3. Easily build SPA for a docs/demo site to show off your library. (Works great for GitHub Pages)  
 4. Simultaneous package development: Build and write changes to disk when running dev-server. Useful for when you are developing packages simultaneously where one package depends on the other (using [npm link](https://docs.npmjs.com/cli/link)).
 
 ## Usage
