@@ -45,6 +45,8 @@ export default Hello  // <-- you could also export more modules than just the de
 
 #### Update Docs Site Entry
 
+This is your SPA entry point for your Docs website. Create some documentation pages for your library and make any changes you need here.
+
 */src/docs.js*
 ```javascript
 import Vue from 'vue'
@@ -64,9 +66,9 @@ new Vue({
 #### Let's Build
 
 ``` bash
-$ npm build          # This builds both your library and your docs/demo SPA.
-$ npm build:library  # This builds just your library.
-$ npm build:docs     # This builds just your docs/demo SPA.
+$ npm build        # This builds both your library and your docs/demo SPA.
+$ npm build:lib    # This builds just your library.
+$ npm build:docs   # This builds just your docs/demo SPA.
 ```
 
 Check your */dist* folder and you'll see some output like this:  
@@ -113,7 +115,8 @@ $ npm install hello --save-dev
 Then just import anywhere, for example a Vue file:  
 
 ```javascript
-import Hello from 'hello'  // <-- hello is the name you gave to your project when you ran the Cli
+import Hello from 'hello'           // <-- hello is the name you gave to your project when you ran the CLI.
+import '~hello/dist/lib/hello.css'  // <-- If your library has styles, you can import those too.
 
 export default {
   components: { Hello },
