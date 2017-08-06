@@ -34,4 +34,5 @@ $link-focus-border: $primary;
 @import "~buefy/src/scss/buefy";
 {{/buefy}}
 
-// Import more app sass/scss styles or files here
+// Import your library's styles
+@import 'lib'
