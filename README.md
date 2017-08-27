@@ -71,6 +71,12 @@ Note: The reason I've updated the configuration to use *index-template.html* ins
 GitHub Pages will look for the built index.html in your repo's root when you upload it. See the section 
 [Don't Forget to Put your Docs Site Online](#dont-forget-to-put-your-docs-site-online) further down.
 
+#### Add externals
+
+If you are using certain dependencies (ie. Lodash, jQuery, etc.) that you think clients would more likely provide 
+in their own project or in their site directly as a script globally (such as from a CDN) then you can use 
+Webpack's externals configuration for this. You can [read more here](https://webpack.js.org/guides/author-libraries/#add-externals).  
+
 #### Let's Build
 
 ``` bash
@@ -111,6 +117,8 @@ Now just publish:
 ``` bash
 $ npm publish   # Note: This will run npm build before publishing. See package.json prepublish (hook).
 ```
+
+Your package is now both on NPM and the Unpkg CDN (https://unpkg.com/your-package-name-here).  
 
 #### Import it to another Project as an ES6 Module
 
