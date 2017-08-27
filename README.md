@@ -63,6 +63,14 @@ new Vue({
 })
 ```
 
+#### Update index-template.html
+
+This is your template for index.html. Add anything you need here that you want to show up in your built index.html.   
+  
+Note: The reason I've updated the configuration to use *index-template.html* instead of *index.html* is because 
+GitHub Pages will look for the built index.html in your repo's root when you upload it. See the section 
+[Don't Forget to Put your Docs Site Online](#dont-forget-to-put-your-docs-site-online) further down.
+
 #### Let's Build
 
 ``` bash
@@ -184,7 +192,10 @@ var webpackConfig = merge(baseWebpackConfig, {
 
 #### Add Vue Recommendations to the Default Linter Standard
 
-The [Vue Eslint Plugin](https://github.com/vuejs/eslint-plugin-vue) now comes with the recommended rules configuration included that you can add to whatever rules you are using (ie. Standard). Since this seems to be the most typical way to develop in Vue, I've added this plugin along with the Standard linter option (default).  
+The [Vue Eslint Plugin](https://github.com/vuejs/eslint-plugin-vue) now comes with the recommended rules configuration included that you can add to whatever rules you are using (ie. Standard). Since this seems to be the most typical way to develop in Vue, I've added this plugin along with the Standard linter option (default).    
+  
+**Update:** The plugin [does not yet work with templates other than HTML](https://github.com/vuejs/eslint-plugin-vue/issues/165). So for now, I've reverted it back 
+to the setup used in Vue's official Webpack template (which this template is forked from).  
 
 #### Stylus, Pug, Bulma
 
@@ -215,39 +226,19 @@ Here's where watch is activated:
       "dev:lib": "webpack --config build/webpack.lib.conf.js --watch --progress --hide-modules", // <-- watch flag added
       "dev:docs": "node build/dev-server.js",
 
-You'll notice we are using [npm-run-all](https://github.com/mysticatea/npm-run-all) to run the dev-server and webpack watch npm scripts in parallel. This is nicer since we forked from the original vue-cli webpack template. The other route we could have taken is to run both using `webpack-hot-middleware` (thanks to github user [ywmalil](https://github.com/ywmail)'s answer [here](https://github.com/webpack/webpack-dev-server/issues/641)'):
+You'll notice we are using [npm-run-all](https://github.com/mysticatea/npm-run-all) to run the dev-server and webpack watch npm scripts in parallel 
+(and it's cross-platform). You could also look into Webpack's multi-compiler mode example: 
+https://github.com/webpack/webpack/tree/master/examples/multi-compiler.
 
-*alternative approach in *dev-server.js* (shown here for demonstration purposes)*
+#### index-template.html instead of index.html
 
-    const firstConfig = require('./config/first');
-    const secondConfig = require('./config/second');
-
-    let express = require('express');
-    let middleware = require('webpack-dev-middleware');
-    let app = express();
-
-    // Dev Server
-    [firstConfig, secondConfig].forEach(function (config) {
-        let compiler = webpack(config);
-        app.use(middleware(compiler, {
-            publicPath: config.output.publicPath
-        }));
-
-        // Enables HMR
-        app.use(webpackHotMiddleware(compiler, {
-            log: console.log, path: config.output.publicPath + '__webpack_hmr', heartbeat: 10 * 1000
-        }));
-
-    });
-
-
-    let server = app.listen(18088);
-
-You could also look into Webpack's multi-compiler mode example: https://github.com/webpack/webpack/tree/master/examples/multi-compiler
+Since GitHub wants the built index.html to reside in the repo's root, we'll need to using another file for the template. Use the file 
+*index-template.html* instead. (We updated the *HtmlWebpackPlugin* configuration in *webpack.dev.conf.js* and *webpack.prod.conf.js* to look 
+for the template file named *index-template.html*)  
 
 #### Some Additional Meta Tags
 
-These additional meta tags are included in your *index.html*:
+These additional meta tags are included in your *index-template.html*:
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
