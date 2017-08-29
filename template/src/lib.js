@@ -1,4 +1,4 @@
-import {{ name }} from './components/hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import {{camelcase name}} from './components/hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{#sass}}
 import './styles/lib.scss'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/sass}}
@@ -6,4 +6,4 @@ import './styles/lib.scss'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import './styles/lib.styl'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/stylus}}
 
-export default {{ name }}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+export default {{camelcase name}}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}

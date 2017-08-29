@@ -1,3 +1,5 @@
+var _ = require('lodash/string')
+
 module.exports = {
   "helpers": {
     "if_or": function (v1, v2, options) {
@@ -6,7 +8,8 @@ module.exports = {
       }
 
       return options.inverse(this);
-    }
+    },
+    "camelcase": str => _.camelCase(str)
   },
   "prompts": {
     "name": {
