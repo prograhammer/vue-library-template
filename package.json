@@ -8,7 +8,6 @@
     "docs:deploy": "bash ./deploy-docs.sh"
   },
   "devDependencies": {
-    "lodash": "^4.17.4",
     "vue-cli": "^2.8.1"
   }
 }
