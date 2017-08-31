@@ -120,7 +120,7 @@ $ npm publish   # Note: This will run npm build before publishing. See package.j
 
 Your package is now both on NPM and the Unpkg CDN (https://unpkg.com/your-package-name-here).  
 
-#### Import it to another Project as an ES6 Module
+#### Import it to another Project
 
 If you've made your package public (via package.json `private:false`) then other developers can install it:  
 
